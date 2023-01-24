@@ -9,6 +9,7 @@
 class Program {
 private:
     std::string in;
+    struct ReadableSize;
 public:
     void setup();
 };
