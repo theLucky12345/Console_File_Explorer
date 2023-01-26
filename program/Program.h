@@ -5,13 +5,18 @@
 #include <string>
 #include <fstream>
 #include <filesystem>
+#include <windows.h>
 
 class Program {
 private:
-    std::string in;
-    struct ReadableSize;
+	void SetColor(int text, int bg);
+	std::string in;
+	struct ReadableSize;
+
+	uintmax_t DirectorySize(const std::filesystem::path &directory);
+
 public:
-    void setup();
+	void setup();
 };
 
 
