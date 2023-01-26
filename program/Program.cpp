@@ -58,6 +58,7 @@ void Program::setup() {
 	} else if (in.starts_with("touch") && in.length() >= 6) {
 		try {
 			std::ofstream out(in.substr(in.find(" ") + 1));
+			out.close();
 		} catch (std::exception &exc) {
 			std::cout << exc.what() << std::endl;
 		}
@@ -109,6 +110,8 @@ void Program::setup() {
 		} catch (std::exception &exc) {
 			std::cout << exc.what() << std::endl;
 		}
+	} else if (in.starts_with("open")) {
+		system(in.substr(in.find(" ") + 1).c_str());
 	} else if (in.starts_with("clear") || in.starts_with("cls") && in.length() == 5 || in.length() == 2) {
 		system("cls");
 	} else if (in.starts_with("exit")) {
@@ -122,11 +125,12 @@ void Program::setup() {
 		          << "type 'ls' to view files/folder in current directory"
 		          << "type 'cd ../ cd' to go back" << std::endl
 		          << "type 'cd {folder_name}' to open folder" << std::endl
+		          << "type 'open {file_name}' to open file" << std::endl
 		          << "type 'mkdir {folder_name}' to create folder" << std::endl
 		          << "type 'touch {file_name}' to create file" << std::endl
 		          << "type 'rm {file_name/folder_name}' to remove file/folder" << std::endl
 		          << "type 'copy {file_name/folder_name}' to copy file/folder" << std::endl
-				  << "type 'rename {file_name/folder_name}' to rename file/folder" << std::endl
+		          << "type 'rename {file_name/folder_name}' to rename file/folder" << std::endl
 		          << "type 'move {file_name/folder_name}' to move file/folder" << std::endl
 		          << "type 'size {file_name/folder_name}' to view size of file/folder" << std::endl
 		          << "===============================================================" << std::endl;
